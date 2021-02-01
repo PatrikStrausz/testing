@@ -43,6 +43,16 @@ public class Main {
         test.interestOverHundredPercent();
         test.interestAndAmountOverValue();
 
+        test.testResult();
+        test.testResult1();
+        test.testResult2();
+        test.testResult3();
+        test.testResult4();
+        test.testResult5();
+        test.testResult6();
+        test.testResult7();
+        test.testResult8();
+
 
         driver.quit();
 

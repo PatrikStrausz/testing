@@ -233,4 +233,171 @@ public class Test {
         resetBtn.click();
 
     }
+
+    public void testResult(){
+
+        amount.sendKeys(String.valueOf(1));
+        interest.sendKeys(String.valueOf(1));
+
+
+        periodRng.sendKeys(String.valueOf(1));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(result.getText(),"Total amount : 1.01 , net profit : 0.01");
+
+
+        resetBtn.click();
+
+    }
+
+    public void testResult1(){
+
+        amount.sendKeys(String.valueOf(0));
+        interest.sendKeys(String.valueOf(0));
+
+
+        periodRng.sendKeys(String.valueOf(1));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(result.getText(),"Total amount : 0.00 , net profit : 0.00");
+
+
+        resetBtn.click();
+
+    }
+    public void testResult2(){
+
+        amount.sendKeys(String.valueOf(0.1));
+        interest.sendKeys(String.valueOf(1));
+
+
+        periodRng.sendKeys(String.valueOf(1));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(result.getText(),"Total amount : 0.10 , net profit : 0.00");
+
+
+        resetBtn.click();
+
+    }
+
+    public void testResult3(){
+
+        amount.sendKeys(String.valueOf(1000));
+        interest.sendKeys(String.valueOf(2));
+
+
+        periodRng.sendKeys(String.valueOf(1));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(result.getText(),"Total amount : 1016.00 , net profit : 16.00");
+
+
+        resetBtn.click();
+
+    }
+
+    public void testResult4(){
+
+        amount.sendKeys(String.valueOf(80000));
+        interest.sendKeys(String.valueOf(1.1));
+
+
+        periodRng.sendKeys(String.valueOf(1));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(result.getText(),"Total amount : 80704.00 , net profit : 704.00");
+
+
+        resetBtn.click();
+
+    }
+
+    public void testResult5(){
+
+        amount.sendKeys(String.valueOf(999999));
+        interest.sendKeys(String.valueOf(0.8));
+
+
+        periodRng.sendKeys(String.valueOf(1));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(result.getText(),"Total amount : 1006398.99 , net profit : 6399.99");
+
+
+        resetBtn.click();
+
+    }
+
+
+    public void testResult6(){
+
+        amount.sendKeys(String.valueOf(1000000));
+        interest.sendKeys(String.valueOf(1));
+
+
+        periodRng.sendKeys(String.valueOf(1));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(result.getText(),"Total amount : 1008000.00 , net profit : 8000.00");
+
+
+        resetBtn.click();
+
+    }
+
+    public void testResult7(){
+
+        amount.sendKeys(String.valueOf(-41));
+        interest.sendKeys(String.valueOf(1));
+
+
+        periodRng.sendKeys(String.valueOf(4));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(amountErrorMsg,"Amount must be a number between 0 and 1000000 !");
+
+
+        resetBtn.click();
+
+    }
+
+    public void testResult8(){
+
+        amount.sendKeys(String.valueOf(897879));
+        interest.sendKeys(String.valueOf(-1));
+
+
+        periodRng.sendKeys(String.valueOf(4));
+        taxYes.click();
+        agreement.click();
+        calculateBtn.click();
+
+        Assert.assertEquals(interestErrorMsg,"Interest must be a number between 0 and 100 !");
+
+
+        resetBtn.click();
+
+    }
+
+
+
+
+
 }
