@@ -42,7 +42,7 @@ public class Main {
         test.amountOverMillion();
         test.interestOverHundredPercent();
         test.interestAndAmountOverValue();
-
+//
         test.testResult();
         test.testResult1();
         test.testResult2();
@@ -52,6 +52,8 @@ public class Main {
         test.testResult6();
         test.testResult7();
         test.testResult8();
+
+
 
 
         driver.quit();

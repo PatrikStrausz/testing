@@ -1,14 +1,17 @@
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
+import static java.lang.Math.PI;
+
 public class Test {
-
-
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
     private WebDriver driver;
 
     WebElement errorMessage;
@@ -236,16 +239,37 @@ public class Test {
 
     public void testResult(){
 
-        amount.sendKeys(String.valueOf(1));
-        interest.sendKeys(String.valueOf(1));
+        amount.sendKeys(String.valueOf(10000));
+        interest.sendKeys(String.valueOf(4));
+
+
 
 
         periodRng.sendKeys(String.valueOf(1));
-        taxYes.click();
+
+
+        taxNo.click();
+
         agreement.click();
+
+
         calculateBtn.click();
 
-        Assert.assertEquals(result.getText(),"Total amount : 1.01 , net profit : 0.01");
+
+
+
+        double value =  calculateResult(amount.getAttribute("value"), interest.getAttribute("value")
+                ,periodRng.getAttribute("value"));
+
+        double profit = value - Double.parseDouble(amount.getAttribute("value"));
+
+
+        String total = String.format("%.2f", value).replace(",",".");
+        String totalProfit = String.format("%.2f", profit).replace(",",".");
+
+        Assert.assertEquals(result.getText(),"Total amount : "+ total+" , net profit : "+totalProfit);
+
+
 
 
         resetBtn.click();
@@ -259,12 +283,20 @@ public class Test {
 
 
         periodRng.sendKeys(String.valueOf(1));
-        taxYes.click();
+        taxNo.click();
         agreement.click();
         calculateBtn.click();
 
-        Assert.assertEquals(result.getText(),"Total amount : 0.00 , net profit : 0.00");
+        double value =  calculateResult(amount.getAttribute("value"), interest.getAttribute("value")
+                ,periodRng.getAttribute("value"));
 
+        double profit = value - Double.parseDouble(amount.getAttribute("value"));
+
+
+        String total = String.format("%.2f", value).replace(",",".");
+        String totalProfit = String.format("%.2f", profit).replace(",",".");
+
+        Assert.assertEquals(result.getText(),"Total amount : "+ total+" , net profit : "+totalProfit);
 
         resetBtn.click();
 
@@ -276,12 +308,20 @@ public class Test {
 
 
         periodRng.sendKeys(String.valueOf(1));
-        taxYes.click();
+        taxNo.click();
         agreement.click();
         calculateBtn.click();
 
-        Assert.assertEquals(result.getText(),"Total amount : 0.10 , net profit : 0.00");
+        double value =  calculateResult(amount.getAttribute("value"), interest.getAttribute("value")
+                ,periodRng.getAttribute("value"));
 
+        double profit = value - Double.parseDouble(amount.getAttribute("value"));
+
+
+        String total = String.format("%.2f", value).replace(",",".");
+        String totalProfit = String.format("%.2f", profit).replace(",",".");
+
+        Assert.assertEquals(result.getText(),"Total amount : "+ total+" , net profit : "+totalProfit);
 
         resetBtn.click();
 
@@ -294,11 +334,20 @@ public class Test {
 
 
         periodRng.sendKeys(String.valueOf(1));
-        taxYes.click();
+        taxNo.click();
         agreement.click();
         calculateBtn.click();
 
-        Assert.assertEquals(result.getText(),"Total amount : 1016.00 , net profit : 16.00");
+        double value =  calculateResult(amount.getAttribute("value"), interest.getAttribute("value")
+                ,periodRng.getAttribute("value"));
+
+        double profit = value - Double.parseDouble(amount.getAttribute("value"));
+
+
+        String total = String.format("%.2f", value).replace(",",".");
+        String totalProfit = String.format("%.2f", profit).replace(",",".");
+
+        Assert.assertEquals(result.getText(),"Total amount : "+ total+" , net profit : "+totalProfit);
 
 
         resetBtn.click();
@@ -312,12 +361,20 @@ public class Test {
 
 
         periodRng.sendKeys(String.valueOf(1));
-        taxYes.click();
+        taxNo.click();
         agreement.click();
         calculateBtn.click();
 
-        Assert.assertEquals(result.getText(),"Total amount : 80704.00 , net profit : 704.00");
+        double value =  calculateResult(amount.getAttribute("value"), interest.getAttribute("value")
+                ,periodRng.getAttribute("value"));
 
+        double profit = value - Double.parseDouble(amount.getAttribute("value"));
+
+
+        String total = String.format("%.2f", value).replace(",",".");
+        String totalProfit = String.format("%.2f", profit).replace(",",".");
+
+        Assert.assertEquals(result.getText(),"Total amount : "+ total+" , net profit : "+totalProfit);
 
         resetBtn.click();
 
@@ -330,12 +387,20 @@ public class Test {
 
 
         periodRng.sendKeys(String.valueOf(1));
-        taxYes.click();
+        taxNo.click();
         agreement.click();
         calculateBtn.click();
 
-        Assert.assertEquals(result.getText(),"Total amount : 1006398.99 , net profit : 6399.99");
+        double value =  calculateResult(amount.getAttribute("value"), interest.getAttribute("value")
+                ,periodRng.getAttribute("value"));
 
+        double profit = value - Double.parseDouble(amount.getAttribute("value"));
+
+
+        String total = String.format("%.2f", value).replace(",",".");
+        String totalProfit = String.format("%.2f", profit).replace(",",".");
+
+        Assert.assertEquals(result.getText(),"Total amount : "+ total+" , net profit : "+totalProfit);
 
         resetBtn.click();
 
@@ -349,12 +414,20 @@ public class Test {
 
 
         periodRng.sendKeys(String.valueOf(1));
-        taxYes.click();
+        taxNo.click();
         agreement.click();
         calculateBtn.click();
 
-        Assert.assertEquals(result.getText(),"Total amount : 1008000.00 , net profit : 8000.00");
+        double value =  calculateResult(amount.getAttribute("value"), interest.getAttribute("value")
+                ,periodRng.getAttribute("value"));
 
+        double profit = value - Double.parseDouble(amount.getAttribute("value"));
+
+
+        String total = String.format("%.2f", value).replace(",",".");
+        String totalProfit = String.format("%.2f", profit).replace(",",".");
+
+        Assert.assertEquals(result.getText(),"Total amount : "+ total+" , net profit : "+totalProfit);
 
         resetBtn.click();
 
@@ -367,12 +440,12 @@ public class Test {
 
 
         periodRng.sendKeys(String.valueOf(4));
-        taxYes.click();
+        taxNo.click();
         agreement.click();
         calculateBtn.click();
 
-        Assert.assertEquals(amountErrorMsg,"Amount must be a number between 0 and 1000000 !");
 
+        Assert.assertEquals(amountErrorMsg,"Amount must be a number between 0 and 1000000 !");
 
         resetBtn.click();
 
@@ -385,16 +458,25 @@ public class Test {
 
 
         periodRng.sendKeys(String.valueOf(4));
-        taxYes.click();
+        taxNo.click();
         agreement.click();
         calculateBtn.click();
 
-        Assert.assertEquals(interestErrorMsg,"Interest must be a number between 0 and 100 !");
+        Assert.assertEquals(amountErrorMsg,"Amount must be a number between 0 and 1000000 !");
 
 
         resetBtn.click();
 
     }
+
+    double calculateResult(String amount, String interest, String period){
+        double k = Double.parseDouble(amount);
+        int t = Integer.parseInt(period);
+
+        double d =  Math.pow(1 + Double.parseDouble(interest) / 100,t );
+        return k * d;
+    }
+
 
 
 
